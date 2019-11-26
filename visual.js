@@ -1,12 +1,11 @@
 
-var statsPromise = d3.csv("Visuals/Sheet2.csv");
+var statsPromise = d3.csv("Sheet2.csv");
 
-statsPromise.then(
-function (stats)
+statsPromise.then(function (stats)
 {
-
-    makeGraph(stats)
-}
+console.log(stats)
+    makeGraph(stats);
+}),
 
 function(err)
 {
@@ -27,25 +26,26 @@ var makeGraph = function(stats)
 
 
 var width = screen.width - margins.left - margins.right;
-var height = screen.height - margin.top - margins.bottom;
+var height = screen.height - margins.top - margins.bottom;
 
-var xScale = d3.scaleLinear().domain([0,38]).range({0, width});
-var yScale = d3.scaleLinear().domain([0,10]).range([height, 0]);
+var xScale = d3.scaleLinear().domain([0, 20]).range([0, width])
+var yScale = d3.scaleLinear().domain([0,2]).range([height, 0])
 
 var xAxis = d3.axisBottom(xScale);
-var yAxis = d3.axis.Bottom(yScale);
+var yAxis = d3.axisLeft(yScale);
+    
 d3.select("svg").append("g").classed("axis", true);
     
     d3.select(".axis")
     .append("g")
     .attr("id", "xAxis")
-    .attr("transform", "translate("+margins.left+","margins.top+height)+")
+     .attr("transform", "translate("+margins.left+","+(margins.top+height)+")")
     .call(xAxis);
     
     d3.select(".axis")
     .append("g")
     .attr("id", "yAxis")
-    .attr("transform", "translate(25, "+margins.top")")
+    .attr("transform", "translate(25, "+margins.top+")")
     .call(yAxis);
 
 drawArray(stats, xScale, yScale)
@@ -53,11 +53,12 @@ drawArray(stats, xScale, yScale)
 
 var drawArray = function(stats, xScale, yScale)
 {
-    d3.stack()
-    .keys("Points Effiency", "Assist Efficiency", "Rebound Efficiency", "Block Efficiency", "Steal Efficiency")
+     
+
     
 }
 
+console.log("sheet2")
 
 
-)
+
