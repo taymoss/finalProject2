@@ -14,7 +14,7 @@ function(err)
 
 
 
-var screen = {width: 500, height:600};
+var screen = {width: 500, height:700};
 var margins = {top:20, right: 75, bottom:75, left:75};
 
 var makeGraph = function(stats)
@@ -86,11 +86,10 @@ var drawArray = function(stats, xScale, yScale)
     .attr("fill", function(d){return "red";})
     .append("rect")
     .attr("x", function(d,i) { console.log(d);
-        return xScale(i); })
+        return 175 + xScale(i); })
     //.attr("x", function(d,i) { return xScale(i); })
-        .attr("y", function(d) { console.log(d[0,1]);
-                                return yScale(d[0,1]); })
-      .attr("height", function(d) { return yScale(parseInt(d[0]))-yScale(parseInt(d[1])); })
+        .attr("y", function(d) {       return yScale(d[0,1]); })
+      .attr("height", function(d) { return 600-(yScale(parseInt(d[0]))-yScale(parseInt(d[1]))); })
     .attr("width", "50");
     
     
