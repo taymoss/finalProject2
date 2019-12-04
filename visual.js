@@ -12,6 +12,8 @@ function(err)
     console.log(err);
 }
 
+
+
 var screen = {width: 500, height:600};
 var margins = {top:20, right: 75, bottom:75, left:75};
 
@@ -65,35 +67,38 @@ var drawArray = function(stats, xScale, yScale)
     //.attr("stroke-width", 2)
     //
     
-     var colors = ["black", "red", "blue", "green", "pink", "yellow", "purple", "brown"];
      
-    var keys = ["Assist Efficiency", "Block Efficiency", "Points Effiency", "Rebound Efficiency", "Steal Efficiency"];
+     
+    var keys = ["AEfficiency", "BEfficiency", "PEffiency", "REfficiency", "SEfficiency"];
  
  var barGenerator = d3.stack()
     .keys(keys)
+ var series = barGenerator(stats)
+ 
+ console.log(series)
     d3.select("svg")
     .append("g")
     .selectAll("g")
-    .data(stats)
-    .style("fill", function(d, i){ return colors[i]; })
+    .data(series)
+   
     
     .enter().append("g")
-    .attr("fill", function(d){return d;})
-    .selectAll("rect")
-    .data(function(d){return d;})
-    .enter()
+    .attr("fill", function(d){return "red";})
     .append("rect")
-    .attr("x", function(d,i) { return xScale(d.data.group); })
+    .attr("x", function(d,i) { console.log(d);
+        return xScale(i); })
     //.attr("x", function(d,i) { return xScale(i); })
-        .attr("y", function(d) { return yScale(d[1]); })
-      .attr("height", function(d) { return yScale(d[1]) - yScale(d[0]); })
+        .attr("y", function(d) { console.log(d[0,1]);
+                                return yScale(d[0,1]); })
+      .attr("height", function(d) { return yScale(parseInt(d[0]))-yScale(parseInt(d[1])); })
     .attr("width", "50");
     
-   
+    
     
 }
 
-console.log("sheet2")
+
+
 
 
 
