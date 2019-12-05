@@ -62,6 +62,7 @@ d3.select("svg").append("g").classed("axis", true);
 
 drawArray(stats, xScale, yScale, cScale)
 drawLegend(stats, keys, series, cScale)
+drawText(stats)
 }
 
 var drawLegend = function(stats, keys, series, cScale)
@@ -93,6 +94,27 @@ var drawLegend = function(stats, keys, series, cScale)
     
 }
 
+/*var drawText = function(stats)
+{
+    d3.select("#bull")
+    .select("p")
+    .append("p")
+       .on("mouseover", function() {
+                d3.select("#tooltip")
+                  .style("left", (d3.event.pageX - 200) + "px")
+                  .style("top", (d3.event.pageY + 20) + "px")
+                  .select("p")
+                  .text("Golden State Warriors");
+            
+            d3.select("#tooltip")
+              .classed("hidden", false)
+         })
+        .on("mouseout", function(){
+            d3.select("#tooltip")
+              .classed("hidden", true)
+        });
+    
+}*/
 
 
 
@@ -134,18 +156,20 @@ var drawArray = function(stats, xScale, yScale, cScale)
       .attr("height", function(d) { return yScale(d[0])-yScale(d[1]); })
     .attr("width", "50")
 
-     .on("mouseover", function(tt) {
-        console.log(tt)
+        .on("mouseover", function() {
                 d3.select("#tooltip")
-                  .style("left", (d3.event.pageX + 20) + "px")
-                  .style("top", (d3.event.pageY - 20) + "px")
+                  .style("left", (d3.event.pageX - 200) + "px")
+                  .style("top", (d3.event.pageY + 20) + "px")
                   .select("p")
-                    .append("p")
-                  .text(function(){ return  tt });
+                  .text("Assist Efficiency: Bulls:10.3 < Warriors: 11.94 ");
             
             d3.select("#tooltip")
               .classed("hidden", false)
          })
+        .on("mouseout", function(){
+            d3.select("#tooltip")
+              .classed("hidden", true)
+        });
         /*.on("mouseout", function(){
             d3.select("#tooltip")
               .classed("hidden", true)
@@ -167,12 +191,27 @@ var drawArray = function(stats, xScale, yScale, cScale)
     
         .attr("y", function(d) {       return yScale(d[1]); })
       .attr("height", function(d) { return yScale(d[0])-yScale(d[1]); })
-    .attr("width", "50");
+    .attr("width", "50")
+   .on("mouseover", function() {
+                d3.select("#tooltip")
+                  .style("left", (d3.event.pageX + 20) + "px")
+                  .style("top", (d3.event.pageY - 20) + "px")
+                  .select("p")
+                  .text("Block Efficiency: Bulls: 1.75 < Warriors: 2.51 ");
+            
+            d3.select("#tooltip")
+              .classed("hidden", false)
+         })
+        .on("mouseout", function(){
+            d3.select("#tooltip")
+              .classed("hidden", true)
+        });;
     
     d3.select("#graph")
     .append("g")
     .selectAll("g")
     .data(series[2])
+    
    
     
     .enter().append("g")
@@ -184,13 +223,12 @@ var drawArray = function(stats, xScale, yScale, cScale)
         .attr("y", function(d) {  return yScale(d[1]); })
       .attr("height", function(d) { return yScale(d[0])-yScale(d[1]); })
     .attr("width", "50")
-     .on("mouseover", function() {
+       .on("mouseover", function() {
                 d3.select("#tooltip")
-                  .style("left", (d3.event.pageX + 20) + "px")
-                  .style("top", (d3.event.pageY - 20) + "px")
+                  .style("left", (d3.event.pageX - 200) + "px")
+                  .style("top", (d3.event.pageY + 20) + "px")
                   .select("p")
-                    .append("p")
-                  .text("Points efficiency calculated by the points that each team had for the year divided by the minutes played. The Bulls had a rating of: 10.3% and the Warriors had a rating of: %");
+                  .text("Points Efficiency: Bulls: 43.72 < Warriors: 47.39");
             
             d3.select("#tooltip")
               .classed("hidden", false)
@@ -198,7 +236,6 @@ var drawArray = function(stats, xScale, yScale, cScale)
         .on("mouseout", function(){
             d3.select("#tooltip")
               .classed("hidden", true)
-            .remove()
         });
     
     d3.select("#graph")
@@ -216,15 +253,12 @@ var drawArray = function(stats, xScale, yScale, cScale)
         .attr("y", function(d) {       return yScale(d[1]); })
       .attr("height", function(d) { return yScale(d[0])-yScale(d[1]); })
     .attr("width", "50")
-     .on("mouseover", function() {
+       .on("mouseover", function() {
                 d3.select("#tooltip")
-                  .style("left", (d3.event.pageX + 20) + "px")
-                  .style("top", (d3.event.pageY - 20) + "px")
+                  .style("left", (d3.event.pageX - 200) + "px")
+                  .style("top", (d3.event.pageY + 20) + "px")
                   .select("p")
-                    .data(stats)
-                    .enter()
-                    .append("p")
-                  .text("Rebound efficiency calculated by the Rebound that each team had for the year divided by the minutes played. The Bulls had a rating of: 10.3% and the Warriors had a rating of: 11.94%");
+                  .text("Rebound Efficiency: Bulls: 18.54 < Warriors: 19.05");
             
             d3.select("#tooltip")
               .classed("hidden", false)
@@ -232,7 +266,6 @@ var drawArray = function(stats, xScale, yScale, cScale)
         .on("mouseout", function(){
             d3.select("#tooltip")
               .classed("hidden", true)
-            .remove()
         });
     
     d3.select("#graph")
@@ -250,15 +283,12 @@ var drawArray = function(stats, xScale, yScale, cScale)
         .attr("y", function(d) {       return yScale(d[1]); })
       .attr("height", function(d) { return yScale(d[0])-yScale(d[1]); })
     .attr("width", "50") 
-        .on("mouseover", function() {
+           .on("mouseover", function() {
                 d3.select("#tooltip")
-                  .style("left", (d3.event.pageX + 20) + "px")
-                  .style("top", (d3.event.pageY - 20) + "px")
+                  .style("left", (d3.event.pageX - 200) + "px")
+                  .style("top", (d3.event.pageY + 20) + "px")
                   .select("p")
-                    .data(stats)
-                    .enter()
-                    .append("p")
-                  .text("Steal efficiency calculated by the steals that each team had for the year divided by the minutes played. The Bulls had a rating of: 10.3% and the Warriors had a rating of: 11.94%");
+                  .text("Steal Efficiency Bulls: 10.3 < Warriors: 11.94");
             
             d3.select("#tooltip")
               .classed("hidden", false)
@@ -266,9 +296,7 @@ var drawArray = function(stats, xScale, yScale, cScale)
         .on("mouseout", function(){
             d3.select("#tooltip")
               .classed("hidden", true)
-            .remove()
         });
-    
     
 }
 

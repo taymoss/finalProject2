@@ -1,7 +1,62 @@
-h1{
-    font-family: fantasy
+body
+{
+background-color:cornsilk
+    
 }
-#graph {
-    position: relative;
 
+p {
+    
+    font-family: 'Sulphur Point', sans-serif; 
+
+    
+}
+#bull
+{
+    max-width: 20%;
+    float: left;
+
+}
+#warriors{
+     max-width: 20%;
+    float: right;
+    
+}
+h1{
+    font-family: fantasy; 
+     text-shadow: 2px 2px gold;
+border-style: solid;
+    border-color: black;
+    color: blue;
+    text-align: center;
+}
+svg {
+     position: relative;
+  left: 300px;
+    float: inherit;
+
+}
+#tooltip{
+    position: absolute;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    background-color: floralwhite;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4); 
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    font-family:fantasy;
+}
+
+#tooltip.hidden{
+    display: none;
+}
+
+#tooltip p{
+    margin: 1;
+    font-family: sans-serif; font-size: 16px;
+    line-height: 20px; 
 }
